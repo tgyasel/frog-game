@@ -31,35 +31,54 @@ public class FrogGame extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		SwingUtilities.invokeLater(() -> new FrogGame().setVisible(true));
-		SwingUtilities.invokeLater(() -> new SimpleFrogDrawing());
-
+		//SwingUtilities.invokeLater(() -> new FrogGame().setVisible(true));
+		new FrogGame();
+		
+		
 	}
 
 	// frog design
-	class FrogPanel extends JPanel {
+	class CuteFrogPanel extends JPanel {
 
-		@Override
-		protected void paintComponent(Graphics g) {
-			super.paintComponent(g);
+	    @Override
+	    protected void paintComponent(Graphics g) {
+	        super.paintComponent(g);
 
-			// Draw the body of the frog
-			g.setColor(Color.GREEN);
-			g.fillOval(100, 100, 200, 150);
+	        // Draw the body of the frog
+	        g.setColor(new Color(85, 214, 85)); // Light Green
+	        g.fillOval(100, 100, 200, 150);
 
-			// Draw the eyes
-			g.setColor(Color.BLACK);
-			g.fillOval(150, 150, 30, 30);
-			g.fillOval(220, 150, 30, 30);
+	        // Draw two eyes at the top of the head
+	        drawEye(g, 165, 120, 15);  // Left eye
+	        drawEye(g, 220, 120, 15);  // Right eye
 
-			// Draw the mouth
-			g.setColor(Color.RED);
-			g.drawArc(160, 190, 80, 40, 0, -180);
+	        // Draw the mouth (smiling)
+	        g.setColor(new Color(255, 127, 127)); // Salmon
+	        g.drawArc(160, 200, 80, 40, 0, -180);
 
-			// Draw the legs
-			g.setColor(Color.GREEN);
-			g.fillRect(130, 240, 20, 80);
-			g.fillRect(200, 240, 20, 80);
-		}
+	        // Draw the cheeks (blush)
+	        g.fillOval(140, 185, 15, 10);
+	        g.fillOval(245, 185, 15, 10);
 
+	        // Draw the bendy legs
+	        g.setColor(new Color(85, 214, 85)); // Light Green
+	        drawBendyLeg(g, 140, 240, 10, 40, 5, 30);
+	        drawBendyLeg(g, 200, 240, 10, 40, 5, 30);
+	        drawBendyLeg(g, 260, 240, 10, 40, 5, 30);
+	    }
+
+	    private void drawEye(Graphics g, int x, int y, int radius) {
+	        g.setColor(Color.BLACK);
+	        g.fillOval(x - radius, y - radius, 2 * radius, 2 * radius);
+	    }
+
+	    private void drawBendyLeg(Graphics g, int x, int y, int width, int height, int bendWidth, int bendHeight) {
+	        g.fillRect(x, y, width, height);
+
+	        // Draw the bend in the leg
+	        
+	        g.fillArc(x - (bendWidth / 2), y + height - bendHeight, width + bendWidth, bendHeight * 2, 0, -180);
+	    }
+	    
+	    
 	}
