@@ -16,6 +16,8 @@ import java.util.Random;
  * if it goes under the line then you are eliminated 
  * pause or exit button
  * how many frogs you caught, and the leaderboard
+ * home/start screen
+ * end screen
  */
 
 public class FrogGame extends JFrame {
