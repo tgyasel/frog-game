@@ -49,30 +49,30 @@ public class FrogGame extends JFrame {
 
 			// body of the frog
 			g.setColor(new Color(85, 214, 85)); // Light Green
-			g.fillOval(100, 100, 200, 150);
+			g.fillOval(100, 100, 100, 75);
 
 			// eyes
-			drawEye(g, 165, 100, 15);  // Left eye
-			drawEye(g, 220, 100, 15);  // Right eye
+			drawEye(g, 165, 100, 8);  // Left eye
+			drawEye(g, 220, 100, 8);  // Right eye
 
 			// the mouth (smiling)
 			g.setColor(new Color(255, 127, 127)); // Salmon
-			g.drawArc(160, 190, 80, 40, 0, -180);
+			g.drawArc(160, 190, 40, 20, 0, -180);
 
 			// the cheeks (blush)
-			g.fillOval(140, 185, 15, 8);
-			g.fillOval(245, 185, 15, 8);
+			g.fillOval(140, 185, 8, 4);
+			g.fillOval(245, 185, 8, 4);
 
 			// the bendy legs
             g.setColor(new Color(85, 214, 85));
-			g.fillRect(150, 220, 20, 40); // left
-			g.fillRect(230, 220, 20, 40); //right
+			g.fillRect(150, 220, 10, 20); // left
+			g.fillRect(230, 220, 10, 20); //right
 
             // catcher box
             g.setColor(Color.black);
-            g.drawRect(320, 442,215,170);
+            g.drawRect(320, 442,108,85);
             g.setColor(new Color(89, 45, 29));
-            g.fillRect(320, 442,215,170);
+            g.fillRect(320, 442,108,85);
 		}
 
 		private void drawEye(Graphics g, int x, int y, int size) {
