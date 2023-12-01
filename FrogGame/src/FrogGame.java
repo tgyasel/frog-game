@@ -87,6 +87,6 @@ public class FrogGame extends JFrame {
           g.setColor(Color.BLACK);
 	        g.fillOval(x - innerCircleSize, y - innerCircleSize, 2 * innerCircleSize, 2 * innerCircleSize);
 	    }
-
+//
 	}
 }
