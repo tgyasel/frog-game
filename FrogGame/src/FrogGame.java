@@ -1,13 +1,12 @@
 import javax.swing.*;
-import javax.swing.*;
-        import java.awt.*;
-        import java.awt.event.ActionEvent;
-        import java.awt.event.ActionListener;
-        import java.awt.event.KeyEvent;
-        import java.awt.event.KeyListener;
-        import java.util.ArrayList;
-        import java.util.List;
-        import java.util.Random;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class FrogGame extends JFrame {
 
@@ -28,12 +27,12 @@ public class FrogGame extends JFrame {
         setFocusable(true);
         addKeyListener(new MyKeyListener());
 
-    //    public class Forest extends JPanel {
-      //      final int Panel_Width = 600;
-       //     final int panel_height = 480;
-     //   }
-
-        frogTimer = new Timer(2000, e -> addFrog());
+        frogTimer = new Timer(2000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                addFrog();
+            }
+        });
         frogTimer.start();
 
         setVisible(true);
@@ -70,7 +69,6 @@ public class FrogGame extends JFrame {
         public void removeFrog(Frog frog) {
             frogs.remove(frog);
             repaint();
-
         }
 
         @Override
@@ -128,13 +126,6 @@ public class FrogGame extends JFrame {
         public int getY() {
             return y;
         }
-
-        public void endGame(){    // end game if frog missed
-            if (y <= 49) {
-                System.exit(0);
-            }
-            System.out.println (" Game Over");
-        }
     }
 
     class BasketPanel extends JPanel {
@@ -168,17 +159,6 @@ public class FrogGame extends JFrame {
                 basketX = getWidth() - basketWidth;
             }
             repaint();
-        }
-    }
-
-    class FrogCounter {
-        private List<FrogCounter> added = new ArrayList<>();
-
-        if(frogs.collision + basket.collision) {
-
-            public void added(Added added) {
-                added.add());
-            }
         }
     }
 
