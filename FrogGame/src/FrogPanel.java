@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FrogPanel extends JPanel {
+public class FrogPanel extends JPanel  {
     private final List<Frog> frogs = new ArrayList<>();
     private final FrogGame frogGame;
 
@@ -34,8 +35,17 @@ public class FrogPanel extends JPanel {
         } else {
             for (Frog frog : frogs) {
                 frog.draw((Graphics2D) g);
-                if (frog.intersects(frogGame.basketPanel.getBounds())) {
+                
+                System.out.println("box:" + frogGame.basketPanel.getBounds());
+                System.out.println("\t" + frog.getX() + " " + frog.getY() + "\n");
+
+                // if (frog.intersects(frogGame.basketPanel.getBounds()) && !frog.collided) {
+                if (frog.intersects(frogGame.basketPanel.getBounds()) && !frog.collided) {
+                    System.out.println("COLLISION: " + frogGame.basketPanel.getBounds());
+                    System.out.println("\t" + frog.getX() + " " + frog.getY());
+                    System.out.println("");
                     updateScore();
+                    frog.collided = true;
                 }
             }
 

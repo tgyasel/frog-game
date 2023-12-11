@@ -26,16 +26,19 @@ public class StartScreen extends JPanel {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 40));
         add(titleLabel, BorderLayout.NORTH);
 
-        // Start button
+        // Start buttons
         JButton startButton = new JButton("Start");
         startButton.setFont(new Font("Arial", Font.PLAIN, 20));
         startButton.addActionListener(new ActionListener() {
-            @Override
+            @Override   
             public void actionPerformed(ActionEvent e) {
+                gp.getContentPane().removeAll();
+                gp.add(gp.frogPanel, BorderLayout.CENTER);
+                gp.add(gp.basketPanel, BorderLayout.SOUTH);
                 gp.startGame();
             }
         });
-        add(startButton, BorderLayout.SOUTH);
+        add(startButton, BorderLayout.SOUTH); //do I keep or discard
     }
 
     public void drawTitleScreen(Graphics g) {

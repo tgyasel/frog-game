@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -9,10 +10,10 @@ import java.util.List;
 import java.util.Random;
 
 
-public class FrogGame extends JFrame {
+public class FrogGame extends JFrame implements ActionListener {
 
     public int gameState;
-    private FrogPanel frogPanel;
+    public FrogPanel frogPanel;
     protected BasketPanel basketPanel;
     private Timer gameTimer;
     protected int score = 0;
@@ -26,12 +27,18 @@ public class FrogGame extends JFrame {
     public final int END_STATE = 2;
 
     protected final int screenWidth = 800; // Adjusted the screen width
-    private final int screenHeight = 600; // Adjusted the screen height
+    public final int screenHeight = 600; // Adjusted the screen height
     private int remainingTime = 30;
+
+    Timer mainTimer;
 
     public FrogGame() {
         super("Frog-Nappers");
         initializeGame();
+    }
+    // public void actionPerformed(ActionEvent)
+    public void actionPerformed(ActionEvent e) {
+        frogPanel.repaint();
     }
 
     private void initializeGame() {
@@ -58,6 +65,10 @@ public class FrogGame extends JFrame {
             }
         });
 
+        mainTimer = new Timer(10, this);
+        mainTimer.setInitialDelay(100);
+        mainTimer.start(); 
+
         // Add the background panel to the content pane
         BackPanel backPanel = new BackPanel();
         add(backPanel);
@@ -81,7 +92,8 @@ public class FrogGame extends JFrame {
 
     public void startGame() {
         gameState = PLAY_STATE;
-        getContentPane().removeAll();
+        getContentPane().add(frogPanel, BorderLayout.CENTER);
+        getContentPane().add(basketPanel, BorderLayout.SOUTH);
         revalidate();
         repaint();
         gameTimer.restart();
@@ -92,6 +104,7 @@ public class FrogGame extends JFrame {
         frogPanel.addFrog(newFrog);
         new Timer(50, e -> {
             newFrog.moveDown();
+            // System.out.println("froggy position:" + newFrog.getY());
             if (newFrog.getY() > frogPanel.getHeight()) {
                 frogPanel.removeFrog(newFrog);
                 ((Timer) e.getSource()).stop();
@@ -116,7 +129,7 @@ public class FrogGame extends JFrame {
         score = 0;
         remainingTime = 30;
         gameState = TITLE_STATE;
-        getContentPane().remove(endScreen);
+        getContentPane().remove(startScreen); // new 
         setupGame();
         revalidate();
         repaint();

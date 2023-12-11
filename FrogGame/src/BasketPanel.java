@@ -6,6 +6,7 @@ public class BasketPanel extends JPanel {
     private int basketX = 100;
     private final int basketWidth = 150;
     private final int basketHeight = 50;
+    private final int speed = 18;
 
     // Add this constructor
     public BasketPanel(FrogGame frogGame) {
@@ -29,7 +30,7 @@ public class BasketPanel extends JPanel {
     }
 
     public void moveLeft() {
-        basketX -= 10;
+        basketX -= speed;
         if (basketX < 0) {
             basketX = 0;
         }
@@ -37,7 +38,7 @@ public class BasketPanel extends JPanel {
     }
 
     public void moveRight() {
-        basketX += 10;
+        basketX += speed;
         if (basketX > getWidth() - basketWidth) {
             basketX = getWidth() - basketWidth;
         }
