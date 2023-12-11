@@ -81,7 +81,8 @@ public class FrogGame extends JFrame {
 
     public void startGame() {
         gameState = PLAY_STATE;
-        getContentPane().removeAll();
+        getContentPane().add(frogPanel, BorderLayout.CENTER);
+        getContentPane().add(basketPanel, BorderLayout.SOUTH);
         revalidate();
         repaint();
         gameTimer.start();
@@ -116,7 +117,7 @@ public class FrogGame extends JFrame {
         score = 0;
         remainingTime = 30;
         gameState = TITLE_STATE;
-        getContentPane().remove(endScreen);
+        getContentPane().remove(startScreen); // new 
         setupGame();
         revalidate();
         repaint();
