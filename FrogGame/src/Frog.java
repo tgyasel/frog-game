@@ -52,6 +52,9 @@ public class Frog {
     public int getY() {
         return y;
     }
+    public int getX() {
+        return x;
+    }
 
     public boolean intersects(Rectangle rect) {
         return rect.intersects(x, y, frogWidth, frogHeight);
