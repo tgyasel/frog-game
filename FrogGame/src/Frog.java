@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.util.Random;
 
 public class Frog {
@@ -6,12 +7,16 @@ public class Frog {
     private int y = 0;
     private final int frogWidth = 80;
     private final int frogHeight = 60;
+    public boolean collided = false;
+
+    private int offset = 15;
+
+    private FrogGame frogGame;
 
     public Frog(FrogGame frogGame) {
         this.x = new Random().nextInt(frogGame.screenWidth - 80);
+        this.frogGame = frogGame;
     }
-
-
 
     public void draw(Graphics2D g) {
         g.setColor(new Color(85, 214, 85));
@@ -32,6 +37,9 @@ public class Frog {
         g.setColor(new Color(85, 214, 85));
         g.fillRect(x + 15, y + 50, legWidth, legHeight);
         g.fillRect(x + 65, y + 50, legWidth, legHeight);
+
+        // g.fillRect(x, y, frogWidth, frogHeight); // for debug
+
     }
 
     private void drawEye(Graphics g, int x, int y, int size) {
@@ -56,7 +64,9 @@ public class Frog {
         return x;
     }
 
-    public boolean intersects(Rectangle rect) {
-        return rect.intersects(x, y, frogWidth, frogHeight);
+    public boolean intersects(Rectangle basketRect) {
+        Rectangle newBasket = new Rectangle((int)basketRect.getX()+offset, (int)(basketRect.getY() + frogGame.screenHeight - 50), 150-offset*2, 50);
+        return newBasket.intersects(x, y, frogWidth, frogHeight);
+     
     }
 }

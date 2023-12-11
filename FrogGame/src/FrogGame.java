@@ -27,7 +27,7 @@ public class FrogGame extends JFrame implements ActionListener {
     public final int END_STATE = 2;
 
     protected final int screenWidth = 800; // Adjusted the screen width
-    private final int screenHeight = 600; // Adjusted the screen height
+    public final int screenHeight = 600; // Adjusted the screen height
     private int remainingTime = 30;
 
     Timer mainTimer;
