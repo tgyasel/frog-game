@@ -66,6 +66,7 @@ public class StartScreen extends JPanel {
         return gp.getWidth() / 2 - length / 2;
     }
 
+
     private class BackgroundImagePanel extends JPanel {
 
         @Override

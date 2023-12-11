@@ -84,7 +84,7 @@ public class FrogGame extends JFrame {
         getContentPane().removeAll();
         revalidate();
         repaint();
-        gameTimer.start();
+        gameTimer.restart();
     }
 
     private void addFrog() {
